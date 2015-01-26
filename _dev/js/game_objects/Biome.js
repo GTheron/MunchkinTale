@@ -4,8 +4,6 @@ define(['DREAM_ENGINE', 'EnvironmentSlice'],
         {
             this.slices = [];
 
-            //var count = params.start;
-            console.log('gonna slice up '+params.count);
             for(var i=0;i<params.count;i++)
             {
                 var slice = new EnvironmentSlice({
