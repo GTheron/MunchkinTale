@@ -24,7 +24,7 @@ and have fun ^_^ hope you'll enjoy it !
 require.config( {
   paths: {
     //'require-text': 'ext_libs/text',
-    'DREAM_ENGINE': 'DreamEngine-min-require'
+    'DREAM_ENGINE'     : 'DreamEngine-min-require'
     ,jquery            : 'ext_libs/jquery-1.11.2.min'
 
     ,'Popups'           : 'plugins/Popups'
@@ -35,19 +35,16 @@ require.config( {
     , 'DE.audiosList'   : 'datas/audiosList'
     , 'DE.dictionary'   : 'datas/dictionary'
 
-    ,'Biome'            : 'custom/Biome'
-    ,'Character'        : 'custom/Character'
     ,'data'             : 'custom/data'
-    ,'EnvironmentSlice' : 'custom/EnvironmentSlice'
     ,'gameLoop'         : 'custom/gameLoop'
     ,'Game'             : 'custom/Game'
-    ,'levelGenerator'   : 'custom/levelGenerator'
-    ,'Player'           : 'custom/Player'
-    ,'PointerHelper'    : 'custom/PointerHelper'
     ,'shared'           : 'custom/shared'
-    ,'Talkable'         : 'custom/Talkable'
-    ,'TextWindow'       : 'custom/TextWindow'
-    ,'WindowButton'       : 'custom/WindowButton'
+
+    ,'Biome'            : 'game_objects/Biome'
+    ,'EnvironmentSlice' : 'game_objects/EnvironmentSlice'
+    ,'Player'           : 'game_objects/Player'
+    ,'PointerHelper'    : 'game_objects/PointerHelper'
+    ,'Talkable'         : 'game_objects/Talkable'
 
     ,'main'             : 'main'
 

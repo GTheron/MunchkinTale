@@ -9,8 +9,8 @@
  Sample empty to make Games
 
  **/
-define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper', 'EnvironmentSlice', 'XTextualNodePlayer', 'TextWindow', 'Popups', 'Button', 'Biome'],
-    function (DE, $, data, Player, Talkable, PointerHelper, EnvironmentSlice, XTextualNodePlayer, TextWindow, Popups, Button, Biome) {
+define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper', 'EnvironmentSlice', 'XTextualNodePlayer', 'Popups', 'Button', 'Biome'],
+    function (DE, $, data, Player, Talkable, PointerHelper, EnvironmentSlice, XTextualNodePlayer, Popups, Button, Biome) {
         var Game = {};
 
         var levelSlices = 26;
