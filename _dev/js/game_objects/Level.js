@@ -1,33 +1,57 @@
-define(['DREAM_ENGINE'],
-function(){
+define(['DREAM_ENGINE', 'EnvironmentLayer'],
+function(DE, EnvironmentLayer){
 
     var Level = function(params){
-        var filePath = params.filePath;
-        var scene = params.scene;
+        this.components = [];
+        this.scene = null;
     };
 
     Level.prototype =
     {
-        render: function(scene)
+        render: function(scene, filePath)
         {
-
+            var _self = this;
+            this.scene = scene;
+            this._loadLevel(filePath);
+            /*$.when(this._loadXml(filePath)).done(
+                function()
+                {
+                    console.log(_self.components);
+                    for(var i=0;i<_self.components.length;i++)
+                    {
+                        scene.add(_self.components[i]);
+                    }
+                }
+            );*/
         },
 
-        _loadXml: function(filePath){
-            var xmlhttp = null;
-            if (window.XMLHttpRequest)
-            {// code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp = new XMLHttpRequest();
-            }
-            else
-            {// code for IE6, IE5
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.open("GET", filePath, false);
-            xmlhttp.send();
-            var xmlDoc = xmlhttp.responseXML;
+        _loadLevel: function(filePath){
+            var _self = this;
+            $.ajax({
+                url: filePath,
+                success: function(xhr){
+                    console.log(JSON.parse(xhr));
+                    var level = JSON.parse(xhr);
+                    for(var i=0;i<level.components.length;i++)
+                    {
+                        var comp = level.components;
+                        comp.levelWidth = level.width;
+                        comp.levelHeight = level.height;
+                        _self._loadComponent(comp);
+                    }
+                }
+            });
+        },
 
-            //TODO add level loading from xml file
+        _loadComponent: function(component)
+        {
+            var comp = {};
+            if(component.type == 'sky')
+            {
+                comp = new EnvironmentLayer(component);
+            }
+
+            this.scene.add(comp);
         }
     };
 

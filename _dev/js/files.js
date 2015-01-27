@@ -42,6 +42,7 @@ require.config( {
 
     ,'Biome'            : 'game_objects/Biome'
     ,'EnvironmentSlice' : 'game_objects/EnvironmentSlice'
+    ,'Level'            : 'game_objects/Level'
     ,'Player'           : 'game_objects/Player'
     ,'PointerHelper'    : 'game_objects/PointerHelper'
     ,'Talkable'         : 'game_objects/Talkable'

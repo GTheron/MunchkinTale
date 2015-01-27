@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level>
-    <component x="0" y="0" z="0" zindex="1001" spriteName="lvl_26" />
+    <component type="background" x="0" y="0" z="0" width="512" height="512" zindex="1001" spriteName="lvl_26" />
 </level>

@@ -9,8 +9,8 @@
  Sample empty to make Games
 
  **/
-define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper', 'EnvironmentSlice', 'XTextualNodePlayer', 'Popups', 'Button', 'Biome'],
-    function (DE, $, data, Player, Talkable, PointerHelper, EnvironmentSlice, XTextualNodePlayer, Popups, Button, Biome) {
+define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper', 'EnvironmentSlice', 'XTextualNodePlayer', 'Popups', 'Button', 'Biome', 'Level'],
+    function (DE, $, data, Player, Talkable, PointerHelper, EnvironmentSlice, XTextualNodePlayer, Popups, Button, Biome, Level) {
         var Game = {};
 
         var levelSlices = 26;
@@ -74,12 +74,15 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
             Game.scene = Game.camera.scene;
             Game.scene.hasDialogButton = false;
 
+            var level = new Level();
+            level.render(Game.scene, 'js/levels/level1.json');
+
             //DE.AudioManager.music.stopAllAndPlay( "music1" );
 
-            Game.titleScreen = new DE.GameObject({
+            /*Game.titleScreen = new DE.GameObject({
                 x:screenW/2,y:screenH/2, zindex: 1000,
                 renderer: new DE.SpriteRenderer({spriteName: "titleScreen"})
-            });
+            });*/
 
             /***** Environments *****/
 
@@ -102,7 +105,7 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
             }
 
 
-            var skies1 = [];
+            /*var skies1 = [];
 
             var sky1StartPos = -200;
             var sky1Height = bgBH*bgScale/5;
@@ -205,19 +208,9 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
                 spriteName: 'biome8',
                 z: biomeZoom, count: 3, startPos: startPos,
                 zindex: biomeZindex, scale: 1
-            }));
+            }));*/
 
-            /*for(var i=-(para1Width/2);i<levelW + para1Width;i=i+para1Width)
-            {
-                var para1Slice = new EnvironmentSlice({
-                    x: i + para1Width/2, y: para1Height/2, z: 4, zindex: 1,
-                    spriteName: 'para1', scale: bgScale
-                });
-
-                Game.para1.push(para1Slice);
-            }*/
-
-            Game.background = [];
+            /*Game.background = [];
 
             //var bgSpriteWidth = 1024;
             var bgHeight = bgBH*bgScale;
@@ -249,11 +242,6 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
                     fillColor: '#611', width: groundWidth, height: groundHeight
                 });
 
-                /*var groundSlice = new DE.GameObject({
-                    x: i, y: bgHeight + groundHeight/2, zindex: 2,
-                    renderer: new DE.BoxRenderer( { "fillColor": "#611" }, groundWidth, groundHeight  )
-                });*/
-
                 Game.ground.push(groundSlice);
             }
 
@@ -266,17 +254,12 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
                     x: i, y: screenH + 150, zindex: 99,
                     spriteName: 'platform', scale: 1
                 });
-
-                /*var fgSlice = new DE.GameObject({
-                    x: i, y: screenH + 150, zindex: 99,
-                    renderer: new DE.SpriteRenderer( { 'spriteName': 'platform', scale: 1, offsetY: 0 } )
-                });*/
                 Game.foreground.push(fgSlice);
-            }
+            }*/
 
             /***** Player *****/
 
-            var player = new Player({
+            /*var player = new Player({
                 x: 400,
                 y: 470,
                 zindex: 11,
@@ -298,10 +281,11 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
             Game.player = player;
 
             Game.camera.focus( player, { lock: { y: true }, offsets: { x: 200, y: 0 } } );
+            */
 
             /***** Talkables *****/
 
-            var king = new Talkable({
+            /*var king = new Talkable({
                 x: 5753,
                 y: 252,
                 zindex: 11,
@@ -339,10 +323,11 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
                 offsetY: -138
             });
             Game.monsterChild = monsterChild;
+            */
 
             /***** Events *****/
 
-            king.onMouseClick = function(mouse)
+            /*king.onMouseClick = function(mouse)
             {
                 Game.onTalkableClick(king, player, mouse, function(){
                     if(dialog.hasWaiting("attente_action(roi)")){
@@ -413,17 +398,17 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
                         }, 1000);
                     }
                 }
-            };
+            };*/
 
-            /*****  *****/
-            dialogWindow = {
+            /***** Dialogs *****/
+            /*dialogWindow = {
                 el: '.dialog',
                 setTitle: function(text){$(this.el).text(text)}
-            };
+            };*/
 
             /***** Adding to scene *****/
 
-            Game.scene.add(Game.titleScreen);
+            /*Game.scene.add(Game.titleScreen);
 
             Game.scene.add(player, king, chief, monsterChild);
 
@@ -433,10 +418,11 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
             Game.addCollectionToScene(Game.scene, Game.background);
             Game.addCollectionToScene(Game.scene, Game.ground);
             Game.addCollectionToScene(Game.scene, Game.foreground);
+            */
 
             /***** Story engine *****/
 
-            var nodeEventReceiver = {
+            /*var nodeEventReceiver = {
                 e_dire_interface_fermer_player: function(){
                     console.log('fermer player');
                 },
@@ -490,6 +476,7 @@ define(['DREAM_ENGINE', 'jquery', 'data', 'Player', 'Talkable', 'PointerHelper',
             Popups.templateName = "popupTemplate";
             Popups.selector = '#popupsContainer';
 
+             */
             // always let a little delay between the real load and the visual load, better feeling
             setTimeout(function () {
                 DE.States.down("isLoading");
